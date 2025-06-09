@@ -36,13 +36,15 @@ p{
 `;
 function Movie(props){
     const {movie} = props;
+    const tmdbImage =`https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
+    const year = movie.year || movie.release_date;
 
     return(
         <StyledMovie>
         <div>
-            <img src={movie.poster} alt={movie.title} />
+            <img src={movie.poster || tmdbImage} />
             <h3>{movie.title}</h3>
-            <p>{movie.year}</p>
+            <p>{year}</p>
         </div>
        </StyledMovie>
     )

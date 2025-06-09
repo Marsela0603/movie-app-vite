@@ -21,6 +21,8 @@ function App() {
       <Route path="/movie/now" element={<NowPlaying />} />
       <Route path="/movie/top" element={<TopRatedMovie />} />
       <Route path="/movie/popular" element={<PopularMovie />} />
+      <Route path="/movie/NowPlaying" element={<NowPlaying />} />
+      <Route path="/movie/TopRated" element={<TopRatedMovie />} />
       <Route path="/counter" element={<Counter />} />
     </Routes>
     </Layout>

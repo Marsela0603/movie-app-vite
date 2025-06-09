@@ -43,6 +43,7 @@
 // export default Hero;
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Container = styled.div`
   margin: 1rem;
@@ -101,30 +102,49 @@ const HeroButton = styled.button`
 `;
 
 const HeroRight = styled.div`
-  @media (min-width: 992px) {
-    flex-basis: 60%;
+  flex-basis: 50%;  /* Ukuran kanan sekitar 50% */
+  display: flex;
+  justify-content: center; /* Supaya gambar di tengah area kanan */
+  align-items: center;
+  
+  @media (max-width: 991px) {
+    margin-top: 1rem;
   }
 `;
 
 const HeroImage = styled.img`
   max-width: 100%;
+  max-height: 300px; 
+  width: auto;
   height: auto;
   border-radius: 25px;
+  object-fit: contain; 
 `;
 
 function Hero() {
   const [movie, setMovie] = useState({});
 
-  useEffect(() => {
-    async function fetchMovie() {
-      const url = "https://www.omdbapi.com/?apikey=fcf50ae6&i=tt2975590";
-      const response = await fetch(url);
-      const data = await response.json();
-      setMovie(data);
-    }
+ useEffect(() => {
+  async function fetchTrendingMovies() {
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    const URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`;
+    const response = await axios(URL);
+    return response.data.results[0];
+  }
 
-    fetchMovie();
-  }, []);
+  async function fetchDetailMovie() {
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    const trendingMovie = await fetchTrendingMovies();
+    const id = trendingMovie.id;
+
+    const params = `?api_key=${API_KEY}&append_to_response=videos`;
+    const URL = `https://api.themoviedb.org/3/movie/${id}${params}`;
+    const response = await axios(URL);
+    setMovie(response.data);
+  }
+
+  fetchDetailMovie();
+}, []);
 
   return (
     <Container>
@@ -132,11 +152,16 @@ function Hero() {
         <HeroLeft>
           <HeroTitle>{movie.Title}</HeroTitle>
           <HeroGenre>Genre: {movie.Genre}</HeroGenre>
-          <HeroDescription>{movie.Plot}</HeroDescription>
+          <HeroDescription>{movie.overview}</HeroDescription>
           <HeroButton>Watch</HeroButton>
         </HeroLeft>
         <HeroRight>
-          <HeroImage src={movie.Poster} alt={movie.Title} />
+         {movie.poster_path && (
+            <HeroImage
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title || movie.original_title}
+            />
+          )}
         </HeroRight>
       </HeroSection>
     </Container>
