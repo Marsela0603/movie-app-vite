@@ -1,18 +1,21 @@
 import styles from "./Movies.module.css";
 import Movie from "../Movie/Movie";
 import data from "../../utils/constans/data";
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import MoviesContext from "../context/MoviesContext";
 
-function Movies(props) {
-const {movies, setMovies} = props;
+function Movies({props}) {
+// const {movies, setMovies} = props;
 
+// const {title = "Latest Movies"} = props;
+const {movies} = useContext(MoviesContext);
   function handleClick(){
     const movie = {
     id: "xyz", title: "Jigsaw",
     year: 2022, type: "Movie",
     poster: "https://picsum.photos/200/300?grayscale",
   };
-  setMovies([...movies,movie]);
+  // setMovies([...movies,movie]);
 }
 
   return (

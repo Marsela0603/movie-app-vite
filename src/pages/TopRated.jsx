@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react"; 
 import axios from "axios";
 import Hero from "../components/Hero/Hero";
 import Movies from "../components/Movies/Movies";
+import MoviesContext from "../components/context/MoviesContext";
 
 function TopRatedMovie() {
-  const [movies, setMovies] = useState([]);
-
+  // const [movies, setMovies] = useState([]);
+const { setMovies } = useContext(MoviesContext);
   useEffect(() => {
     async function fetchTopRated() {
       const API_KEY = import.meta.env.VITE_API_KEY;
@@ -26,7 +27,7 @@ function TopRatedMovie() {
   return (
     <>
       <Hero />
-      <Movies movies={movies} />
+      <Movies title="Top Rated Movies" />
     </>
   );
 }

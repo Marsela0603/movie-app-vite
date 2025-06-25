@@ -147,16 +147,18 @@ function Hero() {
 }, []);
 
   return (
-    <Container>
+     <Container>
       <HeroSection>
         <HeroLeft>
-          <HeroTitle>{movie.Title}</HeroTitle>
-          <HeroGenre>Genre: {movie.Genre}</HeroGenre>
+          <HeroTitle>{movie.title || movie.original_title}</HeroTitle>
+          <HeroGenre>
+            Genre: {movie.genres?.map((g) => g.name).join(', ') || "-"}
+          </HeroGenre>
           <HeroDescription>{movie.overview}</HeroDescription>
           <HeroButton>Watch</HeroButton>
         </HeroLeft>
         <HeroRight>
-         {movie.poster_path && (
+          {movie.poster_path && (
             <HeroImage
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title || movie.original_title}

@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Alert from "../Alert/Alert";
 import styles from "./Addmovie.module.css";
+import { useNavigate } from "react-router-dom";
+import MoviesContext from "../context/MoviesContext";
 
-function AddMovieForm(props) {
+function AddMovieForm() {
+
+  const {movies, setMovies} = useContext(MoviesContext);
+  const navigation = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -13,7 +18,7 @@ function AddMovieForm(props) {
     date: false,
   });
 
-  const { movies, setMovies } = props;
+  // const { movies, setMovies } = props;
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -43,6 +48,7 @@ function AddMovieForm(props) {
       poster: "https://picsum.photos/200/300?grayscale",
     };
     setMovies([...movies, movie]);
+    navigation("/");
   }
 
   function handleSubmit(e) {

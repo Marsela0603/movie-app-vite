@@ -13,7 +13,8 @@ import Typography from '../components/UI/Typography/Index';
 
 function Home() {
 
-    const [movies, setMovies] = useState(data);
+    // const [movies, setMovies] = useState(data);
+    // const [movies] = useState(data);
     return(
         <div>
             {/* <Navbar /> */}
@@ -22,7 +23,8 @@ function Home() {
                 <Button variant="primary">Lihat</Button>
                 <Button variant="secondary" size="sm">Lihat</Button>
                 <Button variant="secondary" size="lg">Lihat</Button>
-                <Movies movies={movies} setMovies={setMovies} />
+                {/* <Movies movies={movies} setMovies={setMovies} /> */}
+                <Movies/>
                 <Typography.Heading>Heading</Typography.Heading>
                 <Typography.Paragraph>Ini paragraf panjaaaangggg.</Typography.Paragraph>
                 <FormComponents.Form>
@@ -30,7 +32,7 @@ function Home() {
                 <FormComponents.Input type="email" id="email" />
                 </FormComponents.Form>
                 <Media.Image src="https://i.pinimg.com/736x/ec/dd/89/ecdd8940a2cfce8f18e0c004dfb109a9.jpg" alt="Gambar" />
-                <AddMovieForm movies={movies} setMovies={setMovies} />
+                {/* <AddMovieForm movies={movies} setMovies={setMovies} /> */}
                 {/* <Counter /> */}
             </main>
             {/* <Footer /> */}
