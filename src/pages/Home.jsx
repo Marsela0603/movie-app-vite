@@ -25,13 +25,13 @@ function Home() {
                 <Button variant="secondary" size="lg">Lihat</Button> */}
                 {/* <Movies movies={movies} setMovies={setMovies} /> */}
                 <Movies/>
-                <Typography.Heading>Heading</Typography.Heading>
-                <Typography.Paragraph>Ini paragraf panjaaaangggg.</Typography.Paragraph>
-                <FormComponents.Form>
+                {/* <Typography.Heading>Heading</Typography.Heading>
+                <Typography.Paragraph>Ini paragraf panjaaaangggg.</Typography.Paragraph> */}
+                {/* <FormComponents.Form>
                 <FormComponents.Label>Email</FormComponents.Label>
                 <FormComponents.Input type="email" id="email" />
                 </FormComponents.Form>
-                <Media.Image src="https://i.pinimg.com/736x/ec/dd/89/ecdd8940a2cfce8f18e0c004dfb109a9.jpg" alt="Gambar" />
+                <Media.Image src="https://i.pinimg.com/736x/ec/dd/89/ecdd8940a2cfce8f18e0c004dfb109a9.jpg" alt="Gambar" /> */}
                 {/* <AddMovieForm movies={movies} setMovies={setMovies} /> */}
                 {/* <Counter /> */}
             </main>
