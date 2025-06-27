@@ -20,9 +20,9 @@ function Home() {
             {/* <Navbar /> */}
             <main>
                 <Hero />
-                <Button variant="primary">Lihat</Button>
+                {/* <Button variant="primary">Lihat</Button>
                 <Button variant="secondary" size="sm">Lihat</Button>
-                <Button variant="secondary" size="lg">Lihat</Button>
+                <Button variant="secondary" size="lg">Lihat</Button> */}
                 {/* <Movies movies={movies} setMovies={setMovies} /> */}
                 <Movies/>
                 <Typography.Heading>Heading</Typography.Heading>
