@@ -127,7 +127,7 @@ function Hero() {
  useEffect(() => {
   async function fetchTrendingMovies() {
     const API_KEY = import.meta.env.VITE_API_KEY;
-    const URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`;
+    const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
     const response = await axios(URL);
     return response.data.results[0];
   }
